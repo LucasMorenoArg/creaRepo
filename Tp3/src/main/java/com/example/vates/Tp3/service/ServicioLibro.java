@@ -29,5 +29,11 @@ public class ServicioLibro {
         return em.createQuery("select * from libro p").getResultList();
     }
 
+    public double promedioId(){
+        return em.createQuery("select p from libro p",Libro.class).getResultStream()
+                .mapToInt(Libro::getId)
+                .average().orElse(0);
+    }
+
 
 }

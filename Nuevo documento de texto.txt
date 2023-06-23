@@ -1,0 +1,2 @@
+http://www.java2s.com/Tutorials/Java/JPA/4505__JPA_Query_AVG_Join_GroupBy.htm
+http://www.java2s.com/Tutorials/Java/JPA/4050__JPA_Query_Like.htm

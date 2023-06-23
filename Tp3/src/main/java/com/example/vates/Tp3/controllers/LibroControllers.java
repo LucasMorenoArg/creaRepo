@@ -33,4 +33,9 @@ public class LibroControllers {
     servicio.crearLibro(libro);
    }
 
+   @GetMapping("/promedioId")
+    public double promedios(){
+       return servicio.promedioId();
+   }
+
 }
