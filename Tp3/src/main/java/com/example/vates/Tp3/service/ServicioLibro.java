@@ -24,13 +24,15 @@ public class ServicioLibro {
         em.persist(libro);
         return true;
     }
+    @Transactional
     public Collection<Libro> consultarTodos(){
 
-        return em.createQuery("select * from libro p").getResultList();
+        return em.createQuery("select p from Libros p").getResultList();
     }
 
     public double promedioId(){
-        return em.createQuery("select p from libro p",Libro.class).getResultStream()
+        return em.createQuery("select p from libro p",Libro.class)
+                .getResultStream()
                 .mapToInt(Libro::getId)
                 .average().orElse(0);
     }

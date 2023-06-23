@@ -5,7 +5,6 @@ import com.example.vates.Tp3.service.ServicioLibro;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -22,9 +21,9 @@ public class LibroControllers {
     public Libro consulta(@PathVariable int id){
        return servicio.consultaind(id);
     }
+
    @GetMapping("/consultaLibros")
     public Collection<Libro> consultaLibros(){
-    //return em.createQuery("select p from Libros p",Libro.class).getResultList();
     return servicio.consultarTodos();
    }
 
