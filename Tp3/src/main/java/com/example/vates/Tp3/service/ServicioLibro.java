@@ -16,12 +16,18 @@ public class ServicioLibro {
     @PersistenceContext
     private EntityManager em;
 
-    public Collection<Libro> consulta(){
-        return em.createQuery("select p from Libros p",Libro.class).getResultList();
+    public Libro consultaind(int id){
+        return em.find(Libro.class, id);
     }
     @Transactional
     public boolean crearLibro(Libro libro){
         em.persist(libro);
         return true;
     }
+    public Collection<Libro> consultarTodos(){
+
+        return em.createQuery("select * from libro p").getResultList();
+    }
+
+
 }
