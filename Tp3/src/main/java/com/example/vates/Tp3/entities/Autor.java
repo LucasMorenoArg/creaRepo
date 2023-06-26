@@ -1,15 +1,8 @@
 package com.example.vates.Tp3.entities;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity(name="Autores")
-@Service
 public class Autor {
 
     @Id
@@ -18,9 +11,9 @@ public class Autor {
     @Column(name="nombre")
     String nombre;
 
-
     public Autor() {
     }
+
     public Autor(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;

@@ -13,18 +13,27 @@ public class ServicioLibro {
     @PersistenceContext
     private EntityManager emLibro;
 
-    @Transactional //listado generales
+    //@Transactional //listado generales
     public Collection<Libro> consultarTodos(){
         return emLibro.createQuery("select p from Libros p").getResultList();
     }
+
     public Libro consultaId(int id){
         return emLibro.find(Libro.class, id);
     }
+
     @Transactional
     public void crearLibro(Libro libro){
         emLibro.persist(libro);
     }
 
+    public void actualizarLibro(Libro libro){
+        emLibro.merge(libro);
+    }
+
+    public void removerLibro(int id){
+        Libro aBorrar = consultaId(id);
+    }
     public double promedioId(){
         return emLibro.createQuery("select p from Libros p",Libro.class)
                 .getResultStream()

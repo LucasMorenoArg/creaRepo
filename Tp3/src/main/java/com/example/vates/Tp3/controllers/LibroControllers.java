@@ -26,10 +26,22 @@ public class LibroControllers {
     public double promedios(){
        return servicioLibro.promedioId();
    }
+
     @PutMapping("/crearLibro")
     public void creaLibro(@RequestBody Libro libro){
         servicioLibro.crearLibro(libro);
     }
+
+    @PutMapping("/actualizarLibro")
+    public void actualizarLibro(@RequestBody Libro libro){
+        servicioLibro.actualizarLibro(libro);
+    }
+
+    @DeleteMapping("/removerLibro/{id}")
+    public void removerLibro(@PathVariable int id){
+        servicioLibro.removerLibro(id);
+    }
+
 
 
 }
