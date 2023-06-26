@@ -1,11 +1,8 @@
 package com.example.vates.Tp3.service;
 
 import com.example.vates.Tp3.entities.Libro;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,24 +11,22 @@ import java.util.Collection;
 @Service
 public class ServicioLibro {
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager emLibro;
 
-    public Libro consultaind(int id){
-        return em.find(Libro.class, id);
-    }
-    @Transactional
-    public boolean crearLibro(Libro libro){
-        em.persist(libro);
-        return true;
-    }
-    @Transactional
+    @Transactional //listado generales
     public Collection<Libro> consultarTodos(){
-
-        return em.createQuery("select p from Libros p").getResultList();
+        return emLibro.createQuery("select p from Libros p").getResultList();
+    }
+    public Libro consultaId(int id){
+        return emLibro.find(Libro.class, id);
+    }
+    @Transactional
+    public void crearLibro(Libro libro){
+        emLibro.persist(libro);
     }
 
     public double promedioId(){
-        return em.createQuery("select p from libro p",Libro.class)
+        return emLibro.createQuery("select p from Libros p",Libro.class)
                 .getResultStream()
                 .mapToInt(Libro::getId)
                 .average().orElse(0);

@@ -1,35 +1,28 @@
 package com.example.vates.Tp3.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import jakarta.persistence.*;
 
-
-@Entity(name="Libros")
-@Table
-@Service
+@Entity(name = "Libros")
 public class Libro {
 
-
-
-    @Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @Column(name = "titulo")
     String titulo;
-    @Column(name = "id_autor")
-    int idAutor;
+    @PrimaryKeyJoinColumn
+    @OneToOne
+    private Autor autor;
 
     public Libro() {
     }
-    public Libro(int id, String titulo, int idAutor) {
-        this.id = id;
-        this.titulo = titulo;
-        this.idAutor = idAutor;
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
     public int getId() {
@@ -48,23 +41,16 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public int getIdAutor() {
-        return idAutor;
-    }
-
-    public void setIdAutor(int idAutor) {
-        this.idAutor = idAutor;
-    }
-
     @Override
     public String toString() {
         return "Libro{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
-                ", idAutor=" + idAutor +
+                ", autor=" + autor +
                 '}';
     }
 
     public void getResultList() {
+
    }
 }

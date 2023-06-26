@@ -1,17 +1,26 @@
 package com.example.vates.Tp3.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
 
-@Entity
-@Table(name="Autores")
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity(name="Autores")
+@Service
 public class Autor {
 
     @Id
+    @Column(name = "id")
     int id;
+    @Column(name="nombre")
     String nombre;
 
+
+    public Autor() {
+    }
     public Autor(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
