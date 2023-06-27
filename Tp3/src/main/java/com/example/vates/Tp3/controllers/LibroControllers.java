@@ -17,12 +17,20 @@ public class LibroControllers {
         return servicioLibro.consultarTodos();
     }
 
+    @GetMapping("/libroxTitulo")
+    public Collection<Libro> libroxTitulo(){
+        return servicioLibro.librosxTitulo();
+    }
+    @GetMapping("/librosxAutor/{idAutor}")
+    public Collection<Libro> librosxAutor(@PathVariable int idAutor){
+        return servicioLibro.libroxIdAutor(idAutor);
+    }
+
     @GetMapping("/consultaId/{id}")
     public Libro consulta(@PathVariable int id){
        return servicioLibro.consultaId(id);
     }
-
-   @GetMapping("/promedioId")
+    @GetMapping("/promedioId")
     public double promedios(){
        return servicioLibro.promedioId();
    }
